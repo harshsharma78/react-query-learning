@@ -7,6 +7,7 @@ import MainLayout from "./components/Layouts/MainLayout.jsx";
 import Home from "./Pages/Home.jsx";
 import FetchOld from "./Pages/FetchOld.jsx";
 import FetchRQ from "./Pages/FetchRQ.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +32,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}>
+    <QueryClientProvider client={new QueryClient()}>
+      <RouterProvider router={router}>
         <App />
-    </RouterProvider>
+      </RouterProvider>
+    </QueryClientProvider>
   </StrictMode>,
 );
